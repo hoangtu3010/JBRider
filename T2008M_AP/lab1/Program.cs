@@ -10,17 +10,10 @@ namespace T2008M_AP.lab1
             Product pr = new Product();
             pr.id = 1;
             pr.name = "Iphone 13";
+            pr.price = 1000;
             pr.qty = 10;
             pr.image = "Anh dep";
             pr.desc = "xuong";
-            pr.gallery.Add("0 - anh 1");
-            pr.gallery.Add("1 - anh 2");
-            pr.gallery.Add("2 - anh 3");
-            pr.gallery.Add("3 - anh 4");
-            pr.gallery.Add("4 - anh 5");
-            pr.gallery.Add("5 - anh 6");
-            pr.gallery.Add("6 - anh 7");
-            pr.gallery.Add("7 - anh 8");
             pr.getInfo();
             if (pr.checkQty())
             {
@@ -30,8 +23,8 @@ namespace T2008M_AP.lab1
             {
                 Console.WriteLine("het hang");
             }
-            pr.addImage();
-            pr.deleteImage();
+            pr.addImage("anh 1");
+            pr.deleteImage("anh 1");
         }
     }
 }

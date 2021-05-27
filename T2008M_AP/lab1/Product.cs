@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace T2008M_AP.lab1
 {
@@ -7,30 +7,75 @@ namespace T2008M_AP.lab1
     {
         public int id;
         public string name;
+        public decimal price;
         public int qty;
         public string image;
         public string desc;
-        public ArrayList gallery = new ArrayList();
+        public List<string> gallery = new List<string>();
 
         public Product()
         {
         }
 
-        public Product(int id, string name, int qty, string image, string desc, ArrayList gallery)
+        public Product(int id, string name, decimal price, int qty, string image, string desc)
         {
             this.id = id;
             this.name = name;
+            this.price = price;
             this.qty = qty;
             this.image = image;
             this.desc = desc;
-            this.gallery = gallery;
+            gallery = new List<string>();
+        }
+
+        public int Id
+        {
+            get => id;
+            set => id = value;
+        }
+
+        public string Name
+        {
+            get => name;
+            set => name = value;
+        }
+
+        public decimal Price
+        {
+            get => price;
+            set => price = value;
+        }
+
+        public int Qty
+        {
+            get => qty;
+            set => qty = value;
+        }
+
+        public string Image
+        {
+            get => image;
+            set => image = value;
+        }
+
+        public string Desc
+        {
+            get => desc;
+            set => desc = value;
+        }
+
+        public List<string> Gallery
+        {
+            get => gallery;
+            set => gallery = value;
         }
 
         public void getInfo()
         {
             Console.WriteLine("id: " + id);
             Console.WriteLine("name: " + name);
-            Console.WriteLine("qty: " + qty);
+            Console.WriteLine("price: " + price);
+            Console.WriteLine("amount: " + qty);
             Console.WriteLine("image: " + image);
             Console.WriteLine("desc: " + desc);
             Console.WriteLine("gallery: ");
@@ -52,46 +97,20 @@ namespace T2008M_AP.lab1
             }
         }
 
-        public void addImage()
+        public bool addImage(string image)
         {
-            int c = 8;
-            for (int i = 0; i < gallery.Count; i++)
+            if (gallery.Count >= 10)
             {
-                if (gallery.Count < 10)
-                {
-                    Console.Write("Them anh: ");
-                    string img = Console.ReadLine();
-                    gallery.Add(c + " - " + img);
-                    c++;
-                }
-                else
-                {
-                    Console.Write("So luong anh da vuot qua 10, moi ban xoa bo 1 anh! \n");
-                    return;
-                }
+                return false;
             }
-            
-            
+            gallery.Add(image);
+            return true;
         }
 
-        public void deleteImage()
+        public bool deleteImage(string image)
         {
-            foreach (var item in gallery)
-            {
-                Console.Write(item + "\n");
-            }
-            
-            Console.WriteLine("Vui long chon anh muon xoa: ");
-            int n = Convert.ToInt32(Console.ReadLine());
-            for (int i = 0; i < gallery.Count; i++)
-            {
-                if (n == i)
-                {
-                    gallery.Remove(i);
-                    Console.Write("Da xoa " + gallery[i] + "\n");
-                    return;
-                }
-            }
+            gallery.Remove(image);
+            return true;
         }
     }
 }
